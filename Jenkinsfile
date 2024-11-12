@@ -43,12 +43,40 @@ pipeline {
 
         stage('Mockito Tests') {
             steps {
+                echo "running tests...";
                 script {
-                    // Run tests (make sure test class is in the correct directory)
                     sh 'mvn test -Dtest=SkierServicesTest'
                 }
             }
         }
+
+        stage('Nexus deploy') {
+            steps {
+                echo "Deploying to Nexus...";
+                script {
+                    sh 'mvn deploy -DskipTests'
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                echo "Building Docker image...";
+                script {
+                    sh 'docker build -t KhiariAymen_5SE4_G5_SkiStation .'
+                }
+            }
+        }
+        
+        stage('Docker Compose Up') {
+            steps {
+                echo "Starting containers using Docker Compose..."
+                script {
+                    sh 'docker-compose up -d' // Runs in detached mode
+                }
+            }
+        }
+
     }
 
     post {
