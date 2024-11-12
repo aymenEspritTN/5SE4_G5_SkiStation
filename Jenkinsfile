@@ -35,9 +35,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo "running SonarQube to check code quality...";
-                script {
-                    // Make sure to configure SonarQube in Jenkins first
-                    sh 'mvn sonar:sonar -Dsonar.host.url=http://your_sonarqube_url'
+                withSonarQubeEnv(installationName: 'sq1') {
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
