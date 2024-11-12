@@ -64,8 +64,11 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
     public void retrieveSubscriptions() {
         for (Subscription sub: subscriptionRepository.findDistinctOrderByEndDateAsc()) {
             Skier   aSkier = skierRepository.findBySubscription(sub);
-            log.info(sub.getNumSub().toString() + " | "+ sub.getEndDate().toString()
-                    + " | "+ aSkier.getFirstName() + " " + aSkier.getLastName());
+            String numSubStr = (sub.getNumSub() != null) ? sub.getNumSub().toString() : "N/A";
+            String firstName = (aSkier != null && aSkier.getFirstName() != null) ? aSkier.getFirstName() : "Unknown";
+            String lastName = (aSkier != null && aSkier.getLastName() != null) ? aSkier.getLastName() : "Unknown";
+
+            log.info(numSubStr + " | " + sub.getEndDate() + " | " + firstName + " " + lastName);
         }
     }
 

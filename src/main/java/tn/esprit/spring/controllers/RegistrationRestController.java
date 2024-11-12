@@ -3,6 +3,7 @@ package tn.esprit.spring.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entities.Instructor;
 import tn.esprit.spring.entities.Registration;
@@ -15,9 +16,14 @@ import java.util.List;
 @Tag(name = "\uD83D\uDDD3️Registration Management")
 @RestController
 @RequestMapping("/registration")
-@RequiredArgsConstructor
+
 public class RegistrationRestController {
+    @Autowired
     private final IRegistrationServices registrationServices;
+
+    public RegistrationRestController(IRegistrationServices registrationServices) {
+        this.registrationServices = registrationServices;
+    }
 
     @Operation(description = "Add Registration and Assign to Skier")
     @PutMapping("/addAndAssignToSkier/{numSkieur}")
