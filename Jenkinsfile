@@ -63,7 +63,7 @@ pipeline {
             steps {
                 echo "Building Docker image...";
                 script {
-                    sh 'docker build -t KhiariAymen_5SE4_G5_SkiStation .'
+                    sh 'docker build -t KhiariAymen_5SE4_G5_SkiStation:1.0.0 .'
                 }
             }
         }
@@ -82,6 +82,9 @@ pipeline {
     post {
         always {
             echo 'Pipeline completed.'
+        }
+        failure {
+            echo 'Pipeline failed. Check the logs for details.'
         }
     }
 }
