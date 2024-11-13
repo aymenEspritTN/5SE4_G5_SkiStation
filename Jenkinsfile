@@ -6,7 +6,7 @@ pipeline {
         BRANCH = "KhiariAymen_5SE4_G5"
     }
     tools {
-        jdk 'JAVA_HOME'
+        jdk 'jdk17'
         maven 'M2_HOME'
     }
 
