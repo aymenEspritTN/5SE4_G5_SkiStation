@@ -11,6 +11,15 @@ pipeline {
     }
 
     stages {
+        
+        stage('Versions') {
+            steps {
+                script {
+                    sh 'java -version'
+                    sh 'mvn -v'
+                }
+            }
+        }
         stage('GIT') {
             steps {
                 echo "getting project from git";
