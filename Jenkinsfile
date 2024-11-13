@@ -11,7 +11,7 @@ pipeline {
     }
 
     stages {
-        
+
         stage('Versions') {
             steps {
                 script {
@@ -76,7 +76,7 @@ pipeline {
             steps {
                 echo "Building Docker image...";
                 script {
-                    sh 'docker build -t KhiariAymen_5SE4_G5_SkiStation:1.0.0 .'
+                    sh 'docker build -t khiariaymen_5se4_g5_ski_station:1.0.0 .'
                 }
             }
         }

@@ -15,7 +15,7 @@ services:
   app-station-ski:
     depends_on:
       - mysqldb
-    image: KhiariAymen_5SE4_G5_SkiStation:1.0.0
+    image: khiariaymen_5se4_g5_ski_station:1.0.0
     # Uncomment if you need to build locally instead of using the image
     # build: ./
     restart: on-failure
