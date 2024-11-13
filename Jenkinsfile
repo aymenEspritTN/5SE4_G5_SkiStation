@@ -4,6 +4,7 @@ pipeline {
     environment {
         GIT_REPO = "https://github.com/aymenEspritTN/5SE4_G5_SkiStation"
         BRANCH = "KhiariAymen_5SE4_G5"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-aymen')
     }
     tools {
         jdk 'jdk17'
@@ -12,7 +13,7 @@ pipeline {
 
     stages {
 
-        stage('Versions') {
+        stage('Log versions') {
             steps {
                 script {
                     sh 'java -version'
@@ -80,7 +81,17 @@ pipeline {
                 }
             }
         }
-        
+        stage('Docker Push') {
+            steps {
+                echo "Pushing Docker image to DockerHub..."
+                script {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    sh 'docker tag khiariaymen_5se4_g5_ski_station:1.0.0 aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
+                    sh 'docker push aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
+                }
+            }
+        }
+
         stage('Docker Compose Up') {
             steps {
                 echo "Starting containers using Docker Compose..."
