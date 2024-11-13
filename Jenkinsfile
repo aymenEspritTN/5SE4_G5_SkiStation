@@ -5,6 +5,10 @@ pipeline {
         GIT_REPO = "https://github.com/aymenEspritTN/5SE4_G5_SkiStation"
         BRANCH = "KhiariAymen_5SE4_G5"
     }
+    tools {
+        jdk 'JAVA_HOME'
+        maven 'M2_HOME'
+    }
 
     stages {
         stage('GIT') {
