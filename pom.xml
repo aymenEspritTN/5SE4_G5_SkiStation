@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>gestion-station-ski</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>gestion-station-ski</name>
     <description>gestion-station-ski</description>
     <url/>
@@ -107,7 +107,7 @@
         <repository>
             <id>nexusDeploy</id>
             <name>Nexus repository</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
+            <url>http://192.168.211.129:8081/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 
