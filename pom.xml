@@ -107,7 +107,7 @@
         <repository>
             <id>nexusDeploy</id>
             <name>Nexus repository</name>
-            <url>http://192.168.211.129:8081/repository/maven-releases/</url>
+            <url>http://192.168.211.129:8081/repository/maven-snapshots/</url>
         </repository>
     </distributionManagement>
 
