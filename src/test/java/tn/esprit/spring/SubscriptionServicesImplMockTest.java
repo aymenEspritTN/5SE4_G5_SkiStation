@@ -133,4 +133,15 @@ public class SubscriptionServicesImplMockTest {
         verify(subscriptionRepository, times(1)).recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL);
         verify(subscriptionRepository, times(1)).recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL);
     }
+    @Test
+    public void testRetrieveSubscriptionByIdWithMockWhenNotFound() {
+        Long subscriptionId = 999L; // Un ID qui n'existe pas
+        when(subscriptionRepository.findById(subscriptionId)).thenReturn(Optional.empty());
+
+        Subscription foundSubscription = subscriptionServices.retrieveSubscriptionById(subscriptionId);
+
+        assertNull(foundSubscription); // Vérifier que la souscription est nulle si non trouvée
+        verify(subscriptionRepository, times(1)).findById(subscriptionId);
+    }
+
 }
