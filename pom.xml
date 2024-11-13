@@ -93,11 +93,10 @@
         </plugins>
     </build>
     <distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>Nexus Repository</name>
-            <url>http://192.168.33.10:8081/repository/maven-releases/</url>
-        </repository>
+        <snapshotRepository>
+            <id>ski</id>
+            <url>http://192.168.33.10:8081/repository/ski/</url>
+        </snapshotRepository>
     </distributionManagement>
 
 </project>
