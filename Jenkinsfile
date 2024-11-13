@@ -85,7 +85,7 @@ pipeline {
             steps {
                 echo "Starting containers using Docker Compose..."
                 script {
-                    sh 'docker-compose up -d' // Runs in detached mode
+                    sh 'docker compose up -d' // Runs in detached mode
                 }
             }
         }
