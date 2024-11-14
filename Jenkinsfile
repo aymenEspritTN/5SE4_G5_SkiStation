@@ -13,14 +13,14 @@ pipeline {
 
     stages {
 
-        stage('Log versions') {
-            steps {
-                script {
-                    sh 'java -version'
-                    sh 'mvn -v'
-                }
-            }
-        }
+        // stage('Log versions') {
+        //     steps {
+        //         script {
+        //             sh 'java -version'
+        //             sh 'mvn -v'
+        //         }
+        //     }
+        // }
         stage('GIT') {
             steps {
                 echo "getting project from git";
@@ -81,16 +81,16 @@ pipeline {
                 }
             }
         }
-        stage('Docker Push') {
-            steps {
-                echo "Pushing Docker image to DockerHub..."
-                script {
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                    sh 'docker tag khiariaymen_5se4_g5_ski_station:1.0.0 aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
-                    sh 'docker push aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
-                }
-            }
-        }
+        // stage('Docker Push') {
+        //     steps {
+        //         echo "Pushing Docker image to DockerHub..."
+        //         script {
+        //             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //             sh 'docker tag khiariaymen_5se4_g5_ski_station:1.0.0 aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
+        //             sh 'docker push aymaym245/khiariaymen_5se4_g5_ski_station:1.0.0'
+        //         }
+        //     }
+        // }
 
         stage('Docker Compose Up') {
             steps {
