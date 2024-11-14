@@ -20,7 +20,8 @@ services:
       - mysql-data:/var/lib/mysql
 
   backend:
-    image: siwarbouabdellah/ski-station:latest
+
+    build: .
     container_name: backend-container
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/stationSki1?createDatabaseIfNotExist=true
